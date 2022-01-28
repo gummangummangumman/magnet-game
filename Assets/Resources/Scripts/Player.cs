@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     
     public float movementSpeed = 1;
 
+    public Score score;
+    public GameOverUI gameOverUI;
+
     private bool isSplit = false;
     private GameObject mainBall, leftBall, rightBall;
 
@@ -57,7 +60,24 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        gameOverUI.ActivateGameOverUI();
         print("you died");
+        movementSpeed = 0;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name.Contains("DeathTrap"))
+        {
+            if (other.GetComponent<DeathTrap>().split && !isSplit)
+            {
+                Die();
+            }
+            else if (!other.GetComponent<DeathTrap>().split && isSplit)
+            {
+                Die();
+            }
+        }
     }
 
 }
