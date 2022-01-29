@@ -15,6 +15,9 @@ public class Menu : MonoBehaviour
     //Public stuff for game over menu - only define these there
     public Text scoreText;
 
+
+    private AudioManager audioManager;
+
     
     void Start()
     {
@@ -24,6 +27,8 @@ public class Menu : MonoBehaviour
             highScoreText.text = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().GetHighscore().ToString("0 000 000 000 000");
             unmutedMenuPic = Resources.Load<Texture>("2D_graphics/MenuNoMagnets");
             mutedMenuPic = Resources.Load<Texture>("2D_graphics/menu_muted");
+            audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+            ShowMutedMenu();
         }
         else if (scoreText)
         {
@@ -35,7 +40,6 @@ public class Menu : MonoBehaviour
         {
             happyMagnetsInitialPosition = happyMagnets.anchoredPosition;
         }
-        ShowMutedMenu();
     }
 
     void Update()
@@ -72,9 +76,14 @@ public class Menu : MonoBehaviour
 
     public void ShowMutedMenu()
     {
-        if (GameObject.Find("AudioManager").GetComponent<AudioManager>().GetMuted())
+        if (audioManager.GetMuted())
             menuImage.texture = mutedMenuPic;
         else
             menuImage.texture = unmutedMenuPic;
+    }
+
+    public void ToggleMute()
+    {
+        audioManager.ToggleMute();
     }
 }

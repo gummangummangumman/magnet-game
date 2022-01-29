@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -42,8 +41,6 @@ public class Player : MonoBehaviour
         {
             transform.LookAt(target);
             transform.position = Vector3.MoveTowards(transform.position, target, movementSpeed * Time.deltaTime);
-            print(target);
-
         }
         
     }
@@ -100,9 +97,8 @@ public class Player : MonoBehaviour
     public void Die()
     {
         movementSpeed = 0;
-        gameOverUI.ActivateGameOverUI();
         print("you died");
-        
+        SceneManager.LoadScene(2);
     }
 
     private void OnTriggerEnter(Collider other)
