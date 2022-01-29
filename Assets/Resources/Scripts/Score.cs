@@ -29,7 +29,7 @@ public class Score : MonoBehaviour
 
     public void StopTheCount()
     {
-        GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().SetHighscore(score);
+        GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().SaveScore(score);
         gameObject.SetActive(false);
     }
 

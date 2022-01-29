@@ -7,11 +7,16 @@ public class Menu : MonoBehaviour
 
     public Text highScoreText;
 
+    public Text scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(highScoreText)
+        if (highScoreText)
             highScoreText.text = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().GetHighscore().ToString("0 000 000 000 000");
+
+        if (scoreText)
+            scoreText.text = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().GetLastScore().ToString("0 000 000 000 000");
     }
 
     public void PlayGame()

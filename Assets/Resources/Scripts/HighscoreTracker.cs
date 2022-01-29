@@ -8,6 +8,7 @@ public class HighscoreTracker : MonoBehaviour
     public HighscoreTracker Instance { get { return instance; } }
 
     private int highScore = 0;
+    private int lastScore = 0;
 
     private void Awake()
     {
@@ -27,15 +28,27 @@ public class HighscoreTracker : MonoBehaviour
             highScore = PlayerPrefs.GetInt("highscore");
     }
 
-    public void SetHighscore(int score)
+    /**
+     *  Saves the last score, and also updates and saves the high score if score is higher than current high score.
+     */
+    public void SaveScore(int score)
     {
-        highScore = score;
-        PlayerPrefs.SetInt("highscore", score);
-        PlayerPrefs.Save();
+        lastScore = score;
+        if(score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.Save();
+        }
     }
 
     public int GetHighscore()
     {
         return highScore;
+    }
+
+    public int GetLastScore()
+    {
+        return lastScore;
     }
 }
