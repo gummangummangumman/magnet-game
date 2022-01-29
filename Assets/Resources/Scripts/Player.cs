@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     private Vector3 target;
 
+    public SfxPlayer sfxPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,9 +91,9 @@ public class Player : MonoBehaviour
             leftBall.SetActive(true);
             
             rightBall.SetActive(true);
-            
         }
-        
+
+        sfxPlayer.PlaySound(isSplit ? "split" : "merge");
     }
 
     public void Die()
