@@ -5,35 +5,61 @@ using UnityEngine;
 public class PathTest : MonoBehaviour
 {
     
-    public Transform target1;
-    [Tooltip("only nessesery if split")]public Transform target2;
-    //[Tooltip("only nessesery if merging")]public Transform target3;
-    public enum behaviour { streight, split};
-
-    [SerializeField] behaviour Behaviour;
-
-    public List<Transform> Targets()
-    {
-        List<Transform> result = new List<Transform>();
-        switch (Behaviour)
-        {
-            case behaviour.streight:
-                result.Add(target1);
-                break;
-            case behaviour.split:
-                result.Add(target1);
-                result.Add(target2);
-                break;
-            
-            default:
-                result.Add(target1);
-                break;
-                
-        }
-        return result;
-
-    }
+    [SerializeField] private Transform target;
     
+
+    [Tooltip("keep at 0 for no split")] [SerializeField] public float splitAmount;
+
+    public Vector3 GetDirections(out float targetSplit, out bool split)
+    {
+        Vector3 direction = new Vector3(0, 1, 0);
+        if (target != null)
+        {
+            direction = target.position;
+        }
+        split = 0 < splitAmount;
+
+        targetSplit = target.GetComponent<PathTest>().splitAmount;
+
+        return direction;
+    }
+
+    
+
+
+
+    private void OnDrawGizmos()
+    {
+        /*
+        if (target == null)
+        {
+            foreach (var pathTest in GameObject.FindObjectsOfType<PathTest>())
+            {
+                if (pathTest.target == null && pathTest != this)
+                {
+                    target = pathTest.transform;
+                }
+            } 
+        }
+        */
+
+        Gizmos.DrawSphere(transform.position, .3f);
+        if (target != null)
+        {
+            Gizmos.DrawLine(transform.position, target.position);
+        }
+
+        transform.LookAt(target);
+
+        if (splitAmount > 0)
+        {
+            Gizmos.DrawCube(transform.position + (transform.right * splitAmount), new Vector3(.6f, .6f, .6f));
+            Gizmos.DrawCube(transform.position - (transform.right * splitAmount), new Vector3(.6f, .6f, .6f));
+        }
+        
+    }
+
+
 
 
 }

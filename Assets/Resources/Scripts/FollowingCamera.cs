@@ -6,17 +6,22 @@ public class FollowingCamera : MonoBehaviour
 {
 
     public Transform playerTransform;
-    public float distanceFromPlayer = 5;
+    public Rigidbody rigid;
+    private Player playerScript;
+    public float Height = 5;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerScript = playerTransform.GetComponent<Player>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = playerTransform.position - new Vector3(0, -1.5f, distanceFromPlayer);
+        rigid.MovePosition(playerTransform.position + new Vector3(0, Height + playerScript.targetSplit, 0) - (playerTransform.forward * 5));
+        //transform.position = playerTransform.position + new Vector3(0, Height + playerScript.targetSplit, 0) - (playerTransform.forward * 5);
+        rigid.MoveRotation(Quaternion.LookRotation(playerTransform.position, Vector3.up));
+        //transform.LookAt(playerTransform);
     }
 }
