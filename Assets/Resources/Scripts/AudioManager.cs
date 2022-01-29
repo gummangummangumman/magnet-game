@@ -1,26 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
 
-    AudioSource audioSource;
-    
-    void Start()
+    //singleton
+    private static AudioManager instance;
+    public AudioManager Instance { get { return instance; } }
+
+    private bool muted = false;
+
+    private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+
+        DontDestroyOnLoad(gameObject);
 
         //Mutes on start only if "mute" is stored as "true" in PlayerPrefs
-        audioSource.mute = PlayerPrefs.GetString("mute", "false") == "true";
+        muted = PlayerPrefs.GetString("mute", "false") == "true";
     }
 
 
     public void ToggleMute()
     {
-        audioSource.mute = !audioSource.mute;
-        print("current mute: " + audioSource.mute);
-        PlayerPrefs.SetString("mute", audioSource.mute ? "true" : "false");
+        muted = !muted;
+        PlayerPrefs.SetString("mute", muted ? "true" : "false");
+        GameObject.Find("MenuMusic").GetComponent<MutableAudioSource>().UpdateMuteStatus();
+    }
+
+    public bool GetMuted()
+    {
+        return muted;
     }
 
 }

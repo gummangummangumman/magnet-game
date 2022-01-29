@@ -10,6 +10,7 @@ public class Menu : MonoBehaviour
     public RawImage menuImage;
 
     private Texture unmutedMenuPic, mutedMenuPic;
+    private Vector2 happyMagnetsInitialPosition;
 
     //Public stuff for game over menu - only define these there
     public Text scoreText;
@@ -29,6 +30,12 @@ public class Menu : MonoBehaviour
             // in "game over" screen
             scoreText.text = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().GetLastScore().ToString("0 000 000 000 000");
         }
+
+        if (happyMagnets)
+        {
+            happyMagnetsInitialPosition = happyMagnets.anchoredPosition;
+        }
+        ShowMutedMenu();
     }
 
     void Update()
@@ -37,6 +44,14 @@ public class Menu : MonoBehaviour
         {
             happyMagnets.Rotate(new Vector3(0, 0, 8 * Time.deltaTime), Space.Self);
         }
+    }
+
+    /**
+     * move happyMagnets in a random space somewhere between [-5, -5] and [5, 5] from its initial position
+     */
+    public void MoveHappyMagnetsSlightly()
+    {
+        happyMagnets.anchoredPosition = happyMagnetsInitialPosition - (Vector2.one * 5) + (new Vector2(Random.value, Random.value) * 10);
     }
 
     public void PlayGame()
@@ -57,7 +72,7 @@ public class Menu : MonoBehaviour
 
     public void ShowMutedMenu()
     {
-        if (GameObject.Find("AudioManager").GetComponent<AudioSource>().mute)
+        if (GameObject.Find("AudioManager").GetComponent<AudioManager>().GetMuted())
             menuImage.texture = mutedMenuPic;
         else
             menuImage.texture = unmutedMenuPic;
