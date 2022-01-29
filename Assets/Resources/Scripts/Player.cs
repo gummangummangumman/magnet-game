@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public float splitSpeed = 1;
 
     public Score score;
-    public GameOverUI gameOverUI;
 
     private bool isSplit = false;
     private bool doSplit = false;
@@ -96,6 +95,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        score.StopTheCount();
         movementSpeed = 0;
         print("you died");
         SceneManager.LoadScene(2);
@@ -103,20 +103,6 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
-        if (other.name.Contains("DeathTrap"))
-        {
-            if (other.GetComponent<DeathTrap>().split && !isSplit)
-            {
-                Die();
-            }
-            else if (!other.GetComponent<DeathTrap>().split && isSplit)
-            {
-                Die();
-            }
-        }
-        */
-
         float _targetSplit = 0;
 
         print("Entered");
