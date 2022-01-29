@@ -60,7 +60,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e799964219cc8af4aa1f9ec67be7a0d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 7
+  movementIncreaseOnLap: 3
+  minimumSplit: 0.3
+  splitSpeed: 1
+  score: {fileID: 0}
+  targetSplit: 0
 --- !u!1 &2262309175098813552
 GameObject:
   m_ObjectHideFlags: 0

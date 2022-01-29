@@ -248,7 +248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2262309174529457352, guid: 03c4139648bb1b744bf77563bfecfca1, type: 3}
       propertyPath: movementSpeed
-      value: 10
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262309174529457352, guid: 03c4139648bb1b744bf77563bfecfca1, type: 3}
+      propertyPath: movementIncreaseOnLap
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2262309174529457353, guid: 03c4139648bb1b744bf77563bfecfca1, type: 3}
       propertyPath: m_RootOrder

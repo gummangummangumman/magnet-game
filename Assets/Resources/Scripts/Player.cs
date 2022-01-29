@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 {
     
     public float movementSpeed = 1;
+    public float movementIncreaseOnLap = 1;
     public float minimumSplit = .3f;
     public float splitSpeed = 1;
 
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour
             if (other.name.Equals("PathPoint1"))
             {
                 score.IncreaseLaps();
+                movementSpeed += movementIncreaseOnLap;
             }
         }
         if (minimumSplit < _targetSplit)
