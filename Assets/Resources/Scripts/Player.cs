@@ -110,6 +110,10 @@ public class Player : MonoBehaviour
         {
             target = other.GetComponent<PathTest>().GetDirections(out _targetSplit, out doSplit);
             print(target);
+            if (other.name.Equals("PathPoint1"))
+            {
+                score.IncreaseLaps();
+            }
         }
         if (minimumSplit < _targetSplit)
         {

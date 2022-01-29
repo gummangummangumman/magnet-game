@@ -9,6 +9,7 @@ public class HighscoreTracker : MonoBehaviour
 
     private int highScore = 0;
     private int lastScore = 0;
+    private int lapsLastRound = 0;
 
     private void Awake()
     {
@@ -31,9 +32,10 @@ public class HighscoreTracker : MonoBehaviour
     /**
      *  Saves the last score, and also updates and saves the high score if score is higher than current high score.
      */
-    public void SaveScore(int score)
+    public void SaveScore(int score, int laps)
     {
         lastScore = score;
+        lapsLastRound = laps;
         if(score > highScore)
         {
             highScore = score;
@@ -50,5 +52,10 @@ public class HighscoreTracker : MonoBehaviour
     public int GetLastScore()
     {
         return lastScore;
+    }
+
+    public int GetLapsLastRound()
+    {
+        return lapsLastRound;
     }
 }

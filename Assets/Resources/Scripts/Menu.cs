@@ -14,6 +14,7 @@ public class Menu : MonoBehaviour
 
     //Public stuff for game over menu - only define these there
     public Text scoreText;
+    public Text lapsText;
 
 
     private AudioManager audioManager;
@@ -33,7 +34,9 @@ public class Menu : MonoBehaviour
         else if (scoreText)
         {
             // in "game over" screen
-            scoreText.text = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().GetLastScore().ToString("0 000 000 000 000");
+            HighscoreTracker highscoreTracker = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>();
+            scoreText.text = highscoreTracker.GetLastScore().ToString("0 000 000 000 000");
+            lapsText.text = highscoreTracker.GetLapsLastRound().ToString();
         }
 
         if (happyMagnets)
