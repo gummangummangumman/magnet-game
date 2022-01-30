@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     void PartsPosition()
     {
         //calculate % to target
-        float percentage = Vector3.Distance(transform.position, target) / distanceToTarget;
+        float percentage = Vector3.Distance(transform.position, target) / (distanceToTarget -.3f);
 
         
         // animate split and merger
