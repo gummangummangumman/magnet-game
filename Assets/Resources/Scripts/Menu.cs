@@ -26,7 +26,7 @@ public class Menu : MonoBehaviour
         {
             // in main menu
             highScoreText.text = GameObject.Find("HighscoreTracker").GetComponent<HighscoreTracker>().GetHighscore().ToString("0 000 000 000 000");
-            unmutedMenuPic = Resources.Load<Texture>("2D_graphics/MenuNoMagnets");
+            unmutedMenuPic = Resources.Load<Texture>("2D_graphics/menu_unmuted");
             mutedMenuPic = Resources.Load<Texture>("2D_graphics/menu_muted");
             audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
             ShowMutedMenu();
