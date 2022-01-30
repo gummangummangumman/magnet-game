@@ -308,7 +308,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 057a72a013267f24799e8c437d1b6207, type: 3}
+  m_audioClip: {fileID: 8300000, guid: bc8872c0dd35a7945a2a980ed01498d6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12615699, g: 0.14064096, b: 0.4245283, a: 1}
+  m_Color: {r: 0, g: 0.19085366, b: 0.2264151, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -691,6 +691,7 @@ MonoBehaviour:
   happyMagnets: {fileID: 1526908834}
   menuImage: {fileID: 1640322111}
   scoreText: {fileID: 0}
+  lapsText: {fileID: 0}
 --- !u!1 &913831409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1312,7 +1313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 75d539c5435e30a428cf4b0f33deaac6, type: 3}
+  m_Texture: {fileID: 2800000, guid: 0bfd6208c7412594a81710ea3495d090, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
