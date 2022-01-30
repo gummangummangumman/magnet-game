@@ -20,6 +20,11 @@ public class Player : MonoBehaviour
 
     public SfxPlayer sfxPlayer;
 
+    private void Awake()
+    {
+        
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,11 +130,15 @@ public class Player : MonoBehaviour
                 target = other.GetComponent<PathTest>().GetDirections(out _targetSplit, out doSplit);
                 print(target);
 
-                if (other.name.Equals("PathPoint1"))
+                if (doSplit && !isSplit)
                 {
-                    score.IncreaseLaps();
-                    movementSpeed += movementIncreaseOnLap;
+                    Die();
                 }
+                else if (!doSplit && isSplit)
+                {
+                    Die();
+                }
+
             }
         }
         if (minimumSplit < _targetSplit)
@@ -138,15 +147,17 @@ public class Player : MonoBehaviour
         }
         PartsPosition();
 
-        if (doSplit && !isSplit)
-        {
-            Die();
-        }
-        else if (!doSplit && isSplit)
-        {
-            Die();
-        }
-
+        
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name.Equals("PathPoint1"))
+        {
+            score.IncreaseLaps();
+            movementSpeed += movementIncreaseOnLap;
+        }
+    }
+
 
 }
