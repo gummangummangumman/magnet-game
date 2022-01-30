@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
     public Text text;
+    public GameObject spacebarPrompt;
     private float time;
 
     private int score = 0;
@@ -18,6 +19,12 @@ public class Score : MonoBehaviour
             time += Time.deltaTime * 6;
             score = (int) Mathf.Floor(time) * 10;
             text.text = score.ToString("0 000 000 000 000");
+        }
+
+        if (spacebarPrompt && time > 12)
+        {
+            Destroy(spacebarPrompt);
+            spacebarPrompt = null;
         }
     }
 
