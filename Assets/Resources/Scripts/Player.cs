@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private bool isSplit = false;
     private bool doSplit = false;
     public float targetSplit;
+    private float lastSplit;
     private float distanceToTarget;
     private float utilizedSplit;
     private GameObject mainBall, leftBall, rightBall;
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour
     void PartsPosition()
     {
         //calculate % to target
-        float percentage = Vector3.Distance(transform.position, target) / (distanceToTarget -.3f);
+        float percentage = Vector3.Distance(transform.position, target) / (distanceToTarget);
 
         
         // animate split and merger
@@ -71,8 +72,8 @@ public class Player : MonoBehaviour
 
             //leftBall.transform.localPosition = Vector3.MoveTowards(leftBall.transform.localPosition, new Vector3(targetSplit > 0 ? -targetSplit : -minimumSplit, 0, 0), splitSpeed * Time.deltaTime);
             //rightBall.transform.localPosition = Vector3.MoveTowards(rightBall.transform.localPosition, new Vector3(targetSplit > 0 ? targetSplit : minimumSplit, 0, 0), splitSpeed * Time.deltaTime);
-            leftBall.transform.localPosition = new Vector3(percentage * (targetSplit > 0 ? -targetSplit : -minimumSplit), 0, 0);
-            rightBall.transform.localPosition = new Vector3(percentage * (utilizedSplit = (targetSplit > 0 ? targetSplit : minimumSplit)), 0, 0);
+            leftBall.transform.localPosition = new Vector3(percentage * ((targetSplit > 0 ? -targetSplit : -minimumSplit)+lastSplit), 0, 0);
+            rightBall.transform.localPosition = new Vector3(percentage * ((utilizedSplit = (targetSplit > 0 ? targetSplit : minimumSplit))- lastSplit), 0, 0);
         }
         else if (leftBall.transform.localPosition == new Vector3(0, 0, 0))
         {
@@ -80,12 +81,12 @@ public class Player : MonoBehaviour
             leftBall.SetActive(false);
             rightBall.SetActive(false);
         }
-        else
+        else if(leftBall.transform.localPosition != new Vector3(0, 0, 0))
         {
             //leftBall.transform.localPosition = Vector3.MoveTowards(leftBall.transform.localPosition, new Vector3(0, 0, 0), splitSpeed * Time.deltaTime);
             //rightBall.transform.localPosition = Vector3.MoveTowards(rightBall.transform.localPosition,  new Vector3(0, 0, 0), splitSpeed * Time.deltaTime);
-            leftBall.transform.localPosition = new Vector3(-(1 - percentage * utilizedSplit), 0, 0);
-            rightBall.transform.localPosition = new Vector3(1 - percentage * utilizedSplit, 0, 0);
+            leftBall.transform.localPosition = new Vector3(-(1 - percentage * (utilizedSplit + lastSplit)), 0, 0);
+            rightBall.transform.localPosition = new Vector3(1 - percentage * (utilizedSplit + lastSplit), 0, 0);
 
         }
         
