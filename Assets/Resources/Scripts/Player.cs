@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private Vector3 target;
 
     public SfxPlayer sfxPlayer;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
         mainBall = transform.GetChild(0).gameObject;
         leftBall = transform.GetChild(1).gameObject;
         rightBall = transform.GetChild(2).gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -99,6 +101,7 @@ public class Player : MonoBehaviour
         }
 
         sfxPlayer.PlaySound(isSplit ? "split" : "merge");
+        audioSource.pitch = isSplit ? 1 : 0.5f;
     }
 
     public void Die()
