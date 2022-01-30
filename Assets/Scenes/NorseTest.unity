@@ -4134,6 +4134,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4929231308729684262, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.a
+      value: 0.69411767
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929231308729684262, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.b
+      value: 0.31764707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929231308729684262, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 4929231308729684262, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
     - target: {fileID: 6190797764873202369, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
       propertyPath: m_Name
       value: GameUI
@@ -4221,6 +4237,22 @@ PrefabInstance:
     - target: {fileID: 6190797764873202373, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190797765005514233, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190797765005514233, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.b
+      value: 0.37818015
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190797765005514233, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4056604
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190797765005514233, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
+      propertyPath: m_Color.r
+      value: 0.16226415
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00bf8d7c62afa24c91b16f5d01d8397, type: 3}
