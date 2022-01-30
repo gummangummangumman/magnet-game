@@ -104,19 +104,32 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+
+
         float _targetSplit = 0;
+
+        if (target == null || target == Vector3.zero)
+        {
+            target = other.GetComponent<PathTest>().GetDirections(out _targetSplit, out doSplit);
+            print(target);
+        }
 
         print("Entered");
         if (other.name.Contains("PathPoint"))
         {
-            target = other.GetComponent<PathTest>().GetDirections(out _targetSplit, out doSplit);
-            print(target);
-            if (other.name.Equals("PathPoint1"))
+
+            if (transform.position == target)
             {
-                score.IncreaseLaps();
-                movementSpeed += movementIncreaseOnLap;
+                target = other.GetComponent<PathTest>().GetDirections(out _targetSplit, out doSplit);
+                print(target);
+
+                if (other.name.Equals("PathPoint1"))
+                {
+                    score.IncreaseLaps();
+                    movementSpeed += movementIncreaseOnLap;
+                }
             }
         }
         if (minimumSplit < _targetSplit)
