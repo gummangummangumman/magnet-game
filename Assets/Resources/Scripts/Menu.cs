@@ -58,21 +58,25 @@ public class Menu : MonoBehaviour
      */
     public void MoveHappyMagnetsSlightly()
     {
+        PlayButtonSound();
         happyMagnets.anchoredPosition = happyMagnetsInitialPosition - (Vector2.one * 5) + (new Vector2(Random.value, Random.value) * 10);
     }
 
     public void PlayGame()
     {
+        PlayButtonSound();
         SceneManager.LoadScene(1);
     }
 
     public void BackToMainMenu()
     {
+        PlayButtonSound();
         SceneManager.LoadScene(0);
     }
 
     public void QuitGame()
     {
+        PlayButtonSound();
         print("You quit the game!");
         Application.Quit();
     }
@@ -88,5 +92,10 @@ public class Menu : MonoBehaviour
     public void ToggleMute()
     {
         audioManager.ToggleMute();
+    }
+
+    private void PlayButtonSound()
+    {
+        GetComponent<AudioSource>().Play();
     }
 }

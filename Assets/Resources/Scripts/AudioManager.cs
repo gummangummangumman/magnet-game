@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
         muted = !muted;
         PlayerPrefs.SetString("mute", muted ? "true" : "false");
         GameObject.Find("MenuMusic").GetComponent<MutableAudioSource>().UpdateMuteStatus();
+        GameObject.Find("Canvas").GetComponent<MutableAudioSource>().UpdateMuteStatus();
     }
 
     public bool GetMuted()
